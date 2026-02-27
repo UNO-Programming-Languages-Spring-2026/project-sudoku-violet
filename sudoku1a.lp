@@ -10,12 +10,12 @@ row(1..4).
 col(1..4).
 num(1..4).
 % makes sure a number is in each box
-1 { sudoku(R, C, N) : num(N) } 1 :- row(R), col(C).
+1 { sudoku(X, Y, N) : num(N) } 1 :- row(X), col(Y).
 %makes sure numbers that are pre-filled don't add another number
-sudoku(R, C, N) :- initial(R, C, N).
+sudoku(X, Y, N) :- initial(X, Y, N).
 % same numbers can't be in same column
-:- sudoku(R1, C, N), sudoku(R2, C, N), R1 != R2.
+:- sudoku(X1, Y, N), sudoku(X2, Y, N), X1 != X2.
 % same numbers can't be in same row
-:- sudoku(R, C1, N), sudoku(R, C2, N), C1 != C2.
+:- sudoku(X, Y1, N), sudoku(X, Y2, N), Y1 != Y2.
 
 #show sudoku/3.
